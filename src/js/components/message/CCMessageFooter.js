@@ -115,7 +115,7 @@ class ccMessageFooter extends Component {
           
           <Row style={ccMessageFooterStyle}>
             
-            <Col lg={12} md={12} sm={12} xs={12} className="h-100 cc-no-padding ">
+            <Col lg={12} md={12} sm={12} xs={12} className="h-100">
               <div 
                 className="ccMessageEditorBox border border-radius-full color-border-grey"
                 contentEditable="true"

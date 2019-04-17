@@ -278,10 +278,10 @@ input:focus, select:focus, textarea:focus, button:focus {
     min-height: 42px;
     align-self: center;
     align-content: center;
-    margin: 3px 0 3px 4px;
     line-height: 32px;
-    padding: 8px;
     outline: none !important;
+    border: unset !important;
+    border-radius: unset !important;
 }
 
 .ccMessageEditorBox[data-placeholder]:not([data-placeholder=""]):empty::before {
