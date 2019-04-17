@@ -32,10 +32,10 @@ class ccMessageFooter extends Component {
 
   handleEnterPressed(e) {
 
-    if (e.key == "Enter" || e.key == "Space") {
+    if (e.key == "Enter") {
       console.log("key pressed : " + e.key);
      // var content = this.ccMessageEditorBox.innerText;
-      
+     this.sendTextMessage();  
     }
   }
 
@@ -101,7 +101,7 @@ class ccMessageFooter extends Component {
     if(this.props.isGuest){
 
       return(
-        <div>
+        <div className="buttonContainer">
            <button onClick={this.openModalHandler.bind(this,"login")} className="startChatBtn"> Start Chatting </button>
            {loginModal}
         </div>
@@ -126,11 +126,11 @@ class ccMessageFooter extends Component {
                 onKeyUp={this.handleEnterPressed.bind(this)}
               />
             </Col>
-            <Col lg={2} md={2} sm={2} xs={2} className="cc-no-padding h-100 align-center" >
+            {/* <Col lg={2} md={2} sm={2} xs={2} className="cc-no-padding h-100 align-center" >
               <div className="ccMessageFooterMenu">
                 <span className="cc-icon sendButton " onClick={this.handleMessage.bind(this)} dangerouslySetInnerHTML={{__html:icon_send}}/>
               </div>
-            </Col>
+            </Col> */}
           </Row>
   
            {loginModal} 

@@ -11,20 +11,18 @@ import './style.sass';
 class Splash extends Component{
 
     componentDidMount() {
-
+        console.log("kshitiz", this.props.isGuestUser);
+        console.log("kshitiz", this.props.loginUser);
         if(this.props.isGuestUser){
-            CometChat.login("guest",CCManager.apiKey).then(
+            CometChat.login(this.props.loginUser,CCManager.apiKey).then(
                 user=>{
                     
                     this.props.setGuestSession(user);
                     this.props.registerListener();
 
-                    var GUID = "techstar-demo";
-                    var password = "";
-                    var groupType = CometChat.GROUP_TYPE.PUBLIC;
-
-
-
+                    // var GUID = "techstar-demo";
+                    // var password = "";
+                    // var groupType = CometChat.GROUP_TYPE.PUBLIC;
 
                     // CometChat.joinGroup(GUID, groupType,password).then(
                     //     group => {
@@ -39,6 +37,33 @@ class Splash extends Component{
                     this.props.stopLoader();
                 }               
             );
+        } else {
+            CometChat.logout()
+            .then(
+                ()=>{      
+                CometChat.login(this.props.loginUser,CCManager.apiKey).then(
+                user=>{
+                    this.props.setGuestSession(user);
+                    this.props.registerListener();
+
+                    var GUID = "techstar-demo";
+                    var password = "";
+                    var groupType = CometChat.GROUP_TYPE.PUBLIC;
+
+
+                    CometChat.joinGroup(GUID, groupType,password).then(
+                        group => {
+                            console.log("demo",{group});
+                            //this.props.startFetchingMessage("group","techstar-demo",100);
+                        }
+                        // error => {
+                        //     console.log("Group joining failed with exception:", error);
+                        // }
+                    );
+                    
+                    this.props.stopLoader();  
+                })
+            });
         }
     }
 
@@ -76,6 +101,7 @@ const mapStateToProps = (store) => {
         currentStage: store.app.splashHandler.stage,
         isSyncStarted: store.app.splashHandler.syncStarted,
         isGuestUser :  store.users.isGuestUser,
+        loginUser: store.users.loginUser
         
     };
 };

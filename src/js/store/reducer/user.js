@@ -7,6 +7,8 @@ const intialState = {
     loggedInUser: {
     },
     isGuestUser: true,
+    loginUser:"guest",
+
 
 }
 
@@ -17,7 +19,12 @@ const reducers = (state = intialState, action) => {
     switch (action.type) {
         case 'createUser':
             
-            break;
+        break;
+
+        case 'setNewUerLoginSession':
+            newState.isGuestUser=false;
+            newState.loginUser=action.user;
+        break;
 
         case 'getNewUserList':
                 

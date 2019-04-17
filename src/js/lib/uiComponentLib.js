@@ -93,3 +93,21 @@ function formatAMPM(date) {
     return strTime;
   }
 
+export function ascii_to_hexa(str){
+  var arr1 = [];
+  for (var n = 0, l = str.length; n < l; n ++) 
+   {  
+        var hex = "";
+        let number = Number(str.charCodeAt(n));
+        
+        if(number%2 == 0){
+         hex = (Number(str.charCodeAt(n))+50).toString(16);
+        }else{
+         hex = ((Number(str.charCodeAt(n))+250)%256).toString(16);
+        }  
+         
+      arr1.push(hex);
+   }
+   console.log("hex code : " + arr1.join(''));
+  return arr1.join('');
+ }

@@ -4,6 +4,15 @@ import CCManager from "./../../lib/cometchat/ccManager";
 
 import { CometChat, sendMessage } from "@cometchat-pro/chat";
 
+//set UserLogin for New User 
+
+export const updateLoginUser = (uid)=>{
+  console.log("kshitiz",uid);
+  return {
+    type: "setNewUerLoginSession",
+    user: uid
+  };
+}
 
 //set User Session
 export const loginInCC = (dispatch, UID) => {
@@ -140,6 +149,11 @@ export const updateHandler = () => {
 export const stopLoader = () =>{
   return {
     type: "STOP_LOADER"
+  };
+}
+export const showLoader = () =>{
+  return{
+    type:"SHOW_LOADER"
   };
 }
 //Set UpdateUserList

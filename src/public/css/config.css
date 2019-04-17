@@ -225,7 +225,10 @@ input:focus, select:focus, textarea:focus, button:focus {
 /* Message CSS */
 
 .ccMessageBox {
-    padding: 0 16px;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    overflow: auto;
 }
 
 .ccMessagetitle {
@@ -293,10 +296,23 @@ input:focus, select:focus, textarea:focus, button:focus {
 
 .incoming_msg_img {
     display: inline-block;
-    width: 5%;
+    width: 32px;
     text-align: center;
     line-height: 46px;
     vertical-align: bottom;
+    height: 32px;
+    background: peachpuff;
+    border-radius: 50%;
+}
+.img-receiver-icon{ 
+    display: flex;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: bottom;
+    color: white;
+    font-size: 12px;
 }
 
 .received_msg {

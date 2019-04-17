@@ -7,18 +7,18 @@ import { calculateAvailableHeight, CheckEmpty } from './../../lib/uiComponentLib
 import * as actionCreator from './../../store/actions/cc_action';
 import './style.sass';
 
-var heightCCMessageBox = calculateAvailableHeight(79, 65, "ccMessage");
+// //var heightCCMessageBox = calculateAvailableHeight(79, 65, "ccMessage");
+// var heightCCMessageBox = calculateAvailableHeight(0, 65, "ccMessage");
+// var ccMessageBoxStyle = {
 
-var ccMessageBoxStyle = {
+//     height: heightCCMessageBox,
+//     overflow: "auto",
 
-    height: heightCCMessageBox,
-    overflow: "auto",
+// };
 
-};
-
-var ccNewMessageNotifierStyle =  {
-    top: (heightCCMessageBox-10),
-}
+// var ccNewMessageNotifierStyle =  {
+//     top: (heightCCMessageBox-10),
+// }
 
 
 
@@ -47,7 +47,7 @@ class CCMessageBox extends Component {
       if (messageUser == -1) {
           try{
             console.log("inside fetch Message : " + userid);
-            this.props.getMessage(userType,userid,50);
+            this.props.getMessage(userType,userid,200);
             
           }catch(error){
             console.log(error);
@@ -108,13 +108,13 @@ class CCMessageBox extends Component {
 
         var displayStatus = this.state.displayStatusNewMessage;
 
-        let classVar = ['messageBoxNewMessageNotification'];
+        // let classVar = ['messageBoxNewMessageNotification'];
 
-        if (displayStatus) {
-            classVar.push('displayBlock');
-        }else{
-            classVar.push('hideBlock');
-        }
+        // if (displayStatus) {
+        //     classVar.push('displayBlock');
+        // }else{
+        //     classVar.push('hideBlock');
+        // }
         
         
         //console.log("inside messagebox : ",JSON.stringify(this.props.messageList));
@@ -132,7 +132,7 @@ class CCMessageBox extends Component {
             return (
                 <div id="ccMessageBoxContainer" key="15646896846sadasd" >
                 
-                    <Row ref={this.refsMessageBox} key="ccmessagebox_b" id="ccMessageBox" className="ccMessageBox" style={ccMessageBoxStyle}>
+                    <Row ref={this.refsMessageBox} key="ccmessagebox_b" id="ccMessageBox" className="ccMessageBox">
                     
                     </Row>
                 </div>
@@ -142,7 +142,7 @@ class CCMessageBox extends Component {
             return (
                 <div id="ccMessageBoxContainer" key="15646896846" >
                                      
-                        <div ref={this.refsMessageBox} key="ccmessagebox_d"  id="ccMessageBox" className="ccMessageBox row" style={ccMessageBoxStyle}>
+                        <div ref={this.refsMessageBox} key="ccmessagebox_d"  id="ccMessageBox" className="ccMessageBox row">
                        
                             {
                                 messageUser.message.map((msg, index) => {
@@ -156,10 +156,6 @@ class CCMessageBox extends Component {
                                     <CCMessage key={msg.id} msgData={msg} />
                                 )
 
-                                    
-                                
-                                
-                            
                                 })
                             }
 
@@ -168,9 +164,9 @@ class CCMessageBox extends Component {
                         </div>
                         
                     
-                    <Row key="ccunreadMessage" class={classVar.join(' ')} style={ccNewMessageNotifierStyle} onClick = {this.scrollToBottom.bind(this)}>
+                    {/* <Row key="ccunreadMessage" class={classVar.join(' ')} style={ccNewMessageNotifierStyle} onClick = {this.scrollToBottom.bind(this)}>
                             <span>Recent message ▼</span>
-                    </Row>
+                    </Row> */}
 
                 </div>
                 

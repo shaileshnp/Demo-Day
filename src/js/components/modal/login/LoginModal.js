@@ -17,7 +17,8 @@ class LoginModal extends React.PureComponent {
         super(props);    
         
         this.state = {
-            email: ""
+            email: "",
+            createUser: this.createUser.bind(this),
         };
     }
 
@@ -41,35 +42,74 @@ class LoginModal extends React.PureComponent {
       handleLoginSubmit(){
 
         let name = this.state.email.split('@')[0];
-        let uid = this.state.email.replace('/\./g','_');
+        let uid = this.state.email.replace(/\./g,'_');
         uid = uid.replace('@','_');
         // let uid = "superhero1";
-        console.log(uid);
+        //console.log(uid);
         //   Check for user available
 
         fetch('https://api.cometchat-dev.com/v1/users/'+uid,{
             method: 'GET',
             headers: { appid: CCManager.appId, apikey: CCManager.apiKey }
         })
-        .then(
-          function(response) {
+        .then( (response)=>{
             if (response.status !== 200) {
-              console.log('Create user here' );
-              return;
+                
+                this.createUser(uid,name);
+                
             }else{
                 console.log("do k=login");
+                this.updatelogin(uid);              
             }
       
-            // Examine the text in the response
-            response.json().then(function(data) {
-              console.log(data);
-            });
+            // // Examine the text in the response
+            // response.json().then(function(data) {
+            //   console.log(data);
+            // });
           }
         )
         .catch(function(err) {
           console.log('Fetch Error :-S', err);
         });
       }
+
+      updatelogin(uid){
+        console.log("kshitiz",uid);
+        this.props.updateLoginUser(uid);
+        this.props.showLoader();
+      }
+    createUser(uid,name){
+        
+        console.log("uid : " + uid);
+        console.log("uid : " + name);
+        console.log("uid : " + this.state.email);
+
+        let data = {
+            'uid':uid,
+            'name':name,
+            'email':this.state.email
+        };
+
+        fetch('https://api.cometchat.com/v1/users',{
+            method: 'POST',
+            headers: { 'content-type': 'application/json', appid: CCManager.appId, apikey: CCManager.apiKey },
+            body: JSON.stringify(data)
+        })
+        .then( (response)=>{
+            if (response.status == 200) {    
+                console.log("do k=login");  
+                this.updatelogin(uid);
+            }    
+            // // // Examine the text in the response
+            // response.json().then(function(data) {
+            //   console.log(data);
+            // });
+          }
+        )
+        .catch(function(err) {
+          console.log('Fetch Error :-S', err);
+        });    
+    }
 
     render(){
 
@@ -143,7 +183,8 @@ const mapStateToProps = (store) =>{
   
   const mapDispachToProps = dispatch => {
     return {
-
+        updateLoginUser : (uid) => dispatch(actionCreator.updateLoginUser(uid)),
+        showLoader : ()=> dispatch(actionCreator.showLoader())
 
     };
   };

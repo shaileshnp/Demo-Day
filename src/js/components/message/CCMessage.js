@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as util from './../../lib/uiComponentLib';
-import * as utils from './../../lib/uiComponentLib';
 
 var Userthumbnail = require('./../../../public/img/user.png');
 var Groupthumbnail = require('./../../../public/img/group.jpg');
@@ -61,19 +60,20 @@ class CCMessage extends Component {
         console.log("message sender id : " + JSON.stringify(msg.sid.uid));
 
         msg.username = this.props.msgData.sender.name;
-        msg.avatar = utils.CheckEmpty(this.props.msgData.sender.avatar) ? this.props.msgData.sender.avatar : Userthumbnail;
+        msg.avatar = util.CheckEmpty(this.props.msgData.sender.avatar) ? this.props.msgData.sender.avatar : Userthumbnail;
 
         const imageViewerModal  = this.state.showModal ? (<ImageViewerModal image_src={this.state.imageUrl} handleClose={this.closeModalHandler.bind(this)}/>) : null;
 
         switch(this.props.msgData.category){
             case CometChat.CATEGORY_CALL: 
-                return (
-                    //to handle all call messages
+                
+                return null;
+                // return (
+                //     //to handle all call messages
                     
-                    <MessageCall msg={msg} openImageViewer={(image)=>this.openModalHandler.bind(this,image)}/>
-                        
-                    
-                );
+                //     <MessageCall msg={msg} openImageViewer={(image)=>this.openModalHandler.bind(this,image)}/>
+                
+                // );
             break;
 
             case CometChat.CATEGORY_MESSAGE:
@@ -90,12 +90,13 @@ class CCMessage extends Component {
             case CometChat.CATEGORY_ACTION :
                     console.log("inside category action :",  this.props.msgData);
                     //to handle group action
-                return (
-                    <div key={msg.msgId} className="messageActionsContainer">
-                        <MessageAction msg={this.props.msgData} openImageViewer={(image)=>this.openModalHandler.bind(this,image)}/>
+                    return null;
+                // return (
+                //     <div key={msg.msgId} className="messageActionsContainer">
+                //         <MessageAction msg={this.props.msgData} openImageViewer={(image)=>this.openModalHandler.bind(this,image)}/>
                         
-                    </div>
-                );      
+                //     </div>
+                // );      
             break;
 
         }
@@ -137,7 +138,13 @@ function MessageType(props) {
 
 
 function IncomingMessage(props) {
-    console.log("Mesage : type : " + props.msg.msgType);
+    console.log("Mesage : type : " + props.msg.username);
+    let temp =  props.msg.username;
+    let username = (temp.charAt(0)+temp.charAt(1)).toUpperCase();
+    let bgcolorUsername = "#"+util.ascii_to_hexa(username+temp.charAt(2));
+    let styleincomingIcon = {
+        background:bgcolorUsername
+    }
     switch(props.msg.msgType){
         case CometChat.MESSAGE_TYPE.IMAGE : {
             let image = props.msg.data.url;
@@ -146,8 +153,10 @@ function IncomingMessage(props) {
                  
 
                 <div className="incoming_msg" onClick = {props.openImageViewer(image)}>
-                    <div className="incoming_msg_img">
-                        <img className="img-circle" src={props.msg.avatar} alt="" style={{ width: "32px", height: "32px" }} />
+                    <div className="incoming_msg_img" style={styleincomingIcon}>
+                        <span className="img-circle img-receiver-icon"  style={{ width: "32px", height: "32px" }}>
+                            {username}
+                        </span>
                     </div>
         
                     <div className="received_msg">
@@ -164,7 +173,9 @@ function IncomingMessage(props) {
             return (
                 <div className="incoming_msg">
                     <div className="incoming_msg_img">
-                        <img className="img-circle" src={props.msg.avatar} alt="" style={{ width: "32px", height: "32px" }} />
+                    <span className="img-circle img-receiver-icon"  style={{ width: "32px", height: "32px" }}>
+                        {username}
+                        </span>
                     </div>
         
                     <div className="received_msg">
@@ -184,7 +195,9 @@ function IncomingMessage(props) {
             return (
                 <div className="incoming_msg">
                     <div className="incoming_msg_img">
-                        <img className="img-circle" src={props.msg.avatar} alt="" style={{ width: "32px", height: "32px" }} />
+                    <span className="img-circle img-receiver-icon" src={props.msg.avatar} style={{ width: "32px", height: "32px" }}>
+                        {username}
+                        </span>
                     </div>
         
                     <div className="received_msg">
@@ -204,7 +217,9 @@ function IncomingMessage(props) {
             return (
                 <div className="incoming_msg">
                     <div className="incoming_msg_img">
-                        <img className="img-circle" src={props.msg.avatar} alt="" style={{ width: "32px", height: "32px" }} />
+                    <span className="img-circle img-receiver-icon" src={props.msg.avatar} style={{ width: "32px", height: "32px" }}>
+                        {username}
+                        </span>
                     </div>
         
                     <div className="received_msg">
@@ -230,8 +245,10 @@ function IncomingMessage(props) {
         case CometChat.MESSAGE_TYPE.TEXT : {
             return (
                 <div className="incoming_msg">
-                    <div className="incoming_msg_img">
-                        <img className="img-circle" src={props.msg.avatar} alt="" style={{ width: "32px", height: "32px" }} />
+                    <div className="incoming_msg_img" style={styleincomingIcon}>
+                    <span className="img-circle img-receiver-icon" src={props.msg.avatar} style={{ width: "32px", height: "32px" }}>
+                        {username}
+                        </span>
                     </div>
         
                     <div className="received_msg">
