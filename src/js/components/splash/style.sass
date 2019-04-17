@@ -1,0 +1,60 @@
+.splashContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.iconContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+}
+
+.icon_cc{
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}    
+
+.loaderContainer{
+    display: block;
+    font-size: 18px;
+}
+
+@keyframes blink {50% { color: transparent }}
+
+.loader__dot { animation: 2s blink infinite }
+
+.loader__dot:nth-child(2) { animation-delay: 250ms }
+
+.loader__dot:nth-child(3) { animation-delay: 500ms }
+
+.loader__dot:nth-child(4) { animation-delay: 750ms }
+
+
+ .sendButton {
+    border: 1px solid;
+    border-radius: 32px;
+    width: 50px !important;
+    height: 50px !important;;
+    color: white;
+    background: #2636be;
+    display: inline-flex !important;;
+    justify-content: center;
+    align-content: center;
+}
+
+    .cc-icon {
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: opacity .2s;
+}
+
+
