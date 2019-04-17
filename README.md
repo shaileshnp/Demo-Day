@@ -1,5 +1,7 @@
 # Demo-Day
 
-Step1: npm install
-Step2: npm run dev
-Step3: localhost:5000
+Step1: Run in command terminal  : npm install
+
+Step2: Run in command terminal : npm run dev
+
+Step3: Open in browser : localhost:5000
