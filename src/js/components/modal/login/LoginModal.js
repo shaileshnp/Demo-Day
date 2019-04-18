@@ -58,7 +58,7 @@ class LoginModal extends React.PureComponent {
                 this.createUser(uid,name);
                 
             }else{
-                console.log("do k=login");
+                console.log("do login");
                 this.updatelogin(uid);              
             }
       
@@ -74,7 +74,7 @@ class LoginModal extends React.PureComponent {
       }
 
       updatelogin(uid){
-        console.log("kshitiz",uid);
+        console.log("Hello",uid);
         this.props.updateLoginUser(uid);
         this.props.showLoader();
       }
@@ -97,7 +97,7 @@ class LoginModal extends React.PureComponent {
         })
         .then( (response)=>{
             if (response.status == 200) {    
-                console.log("do k=login");  
+                console.log("do login");  
                 this.updatelogin(uid);
             }    
             // // // Examine the text in the response

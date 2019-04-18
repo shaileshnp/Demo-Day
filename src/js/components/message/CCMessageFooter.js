@@ -102,7 +102,7 @@ class ccMessageFooter extends Component {
 
       return(
         <div className="buttonContainer">
-           <button onClick={this.openModalHandler.bind(this,"login")} className="startChatBtn"> Start Chatting </button>
+           <button onClick={this.openModalHandler.bind(this,"login")} className="startChatBtn">START CHATTING</button>
            {loginModal}
         </div>
         

@@ -5,7 +5,7 @@ const intialState = {
     messages:[],
     activeMessage : {
         type: "group",
-        id:  "techstar-demo"
+        id:  "techstarsdemo"
     }
 }
 

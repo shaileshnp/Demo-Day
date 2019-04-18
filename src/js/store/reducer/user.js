@@ -7,7 +7,7 @@ const intialState = {
     loggedInUser: {
     },
     isGuestUser: true,
-    loginUser:"guest",
+    loginUser:"superhero1",
 
 
 }

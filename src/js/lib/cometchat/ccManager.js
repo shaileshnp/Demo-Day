@@ -12,8 +12,8 @@ export default class CCManager {
 
 
 
-  static appId        =   '1255466c41bd7f'   ;   //Enter your App ID
-  static apiKey       =   'cb1e6584b4ddac0064edae0144f6a0a833355c69'  ;  //Enter your API KEY
+  static appId        =   '1555cb465ec5e3'   ;   //Enter your App ID
+  static apiKey       =   'f45b383f5b8558e9614727c2e70a4880ff925522'  ;  //Enter your API KEY
 
   static LISTENER_KEY_MESSAGE = "msglistener";
   static LISTENER_KEY_USER = "userlistener";

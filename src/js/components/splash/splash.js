@@ -11,8 +11,8 @@ import './style.sass';
 class Splash extends Component{
 
     componentDidMount() {
-        console.log("kshitiz", this.props.isGuestUser);
-        console.log("kshitiz", this.props.loginUser);
+        console.log("hello", this.props.isGuestUser);
+        console.log("hello", this.props.loginUser);
         if(this.props.isGuestUser){
             CometChat.login(this.props.loginUser,CCManager.apiKey).then(
                 user=>{
@@ -20,19 +20,19 @@ class Splash extends Component{
                     this.props.setGuestSession(user);
                     this.props.registerListener();
 
-                    // var GUID = "techstar-demo";
-                    // var password = "";
-                    // var groupType = CometChat.GROUP_TYPE.PUBLIC;
+                    var GUID = "techstarsdemo";
+                    var password = "";
+                    var groupType = CometChat.GROUP_TYPE.PUBLIC;
 
-                    // CometChat.joinGroup(GUID, groupType,password).then(
-                    //     group => {
-                    //         console.log("demo",{group});
-                    //         this.props.startFetchingMessage("group","techstar-demo",100);
-                    //     },
-                    //     error => {
-                    //         console.log("Group joining failed with exception:", error);
-                    //     }
-                    // );
+                    CometChat.joinGroup(GUID, groupType,password).then(
+                        group => {
+                            console.log("demo",{group});
+                            // this.props.startFetchingMessage("group","techstarsdemo",100);
+                        },
+                        error => {
+                            console.log("Group joining failed with exception:", error);
+                        }
+                    );
                     
                     this.props.stopLoader();
                 }               
@@ -46,7 +46,7 @@ class Splash extends Component{
                     this.props.setGuestSession(user);
                     this.props.registerListener();
 
-                    var GUID = "techstar-demo";
+                    var GUID = "techstarsdemo";
                     var password = "";
                     var groupType = CometChat.GROUP_TYPE.PUBLIC;
 
@@ -54,7 +54,7 @@ class Splash extends Component{
                     CometChat.joinGroup(GUID, groupType,password).then(
                         group => {
                             console.log("demo",{group});
-                            //this.props.startFetchingMessage("group","techstar-demo",100);
+                            //this.props.startFetchingMessage("group","techstarsdemo",100);
                         }
                         // error => {
                         //     console.log("Group joining failed with exception:", error);
@@ -73,7 +73,7 @@ class Splash extends Component{
 
         return(
 
-        <Grid fluid={true} className="border-radius-top bg-white h-100pr">
+        <Grid fluid={true} className="bg-white h-100pr">
             <Row className="ccShowGrid bg-white border-radius-top ">
                 <Col lg={12} className="splashContainer">
 

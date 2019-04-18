@@ -145,6 +145,9 @@ function IncomingMessage(props) {
     let styleincomingIcon = {
         background:bgcolorUsername
     }
+    let styleUserNameClr = {
+        color: bgcolorUsername
+    }
     switch(props.msg.msgType){
         case CometChat.MESSAGE_TYPE.IMAGE : {
             let image = props.msg.data.url;
@@ -245,15 +248,15 @@ function IncomingMessage(props) {
         case CometChat.MESSAGE_TYPE.TEXT : {
             return (
                 <div className="incoming_msg">
-                    <div className="incoming_msg_img" style={styleincomingIcon}>
+                    {/* <div className="incoming_msg_img" style={styleincomingIcon}>
                     <span className="img-circle img-receiver-icon" src={props.msg.avatar} style={{ width: "32px", height: "32px" }}>
                         {username}
                         </span>
-                    </div>
+                    </div> */}
         
                     <div className="received_msg">
                         <div className="received_withd_msg">
-                            <p class="color-light-tint color-dark-tint-font border-radius-no-bottom-left">{props.msg.data.text}
+                            <p class="color-light-tint color-dark-tint-font border-radius-no-bottom-left"><span style={styleUserNameClr}><b>{temp}</b></span><br></br>{props.msg.data.text}
                             </p>
                             <span className="time_date color-light-tint-font">{util.convertStringToDate(props.msg.sendAt)}</span>
                         </div>

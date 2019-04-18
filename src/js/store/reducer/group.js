@@ -5,9 +5,9 @@ const intialState = {
     groupsList:[
         { 
             createdAt: 1555022497,
-            guid: "techstar-demo",
+            guid: "techstarsdemo",
             hasJoined: true,
-            name: "Techstars demo",
+            name: "Techstars Demo",
             owner: "app_system",
             type: "public"
         }
