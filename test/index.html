@@ -14,15 +14,15 @@
   
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-8" style="background: #000; color: #ffffff; padding-top: 20px;">
+        <div class="col-lg-8 col-md-8 col-sm-6" style="background: #000; color: #ffffff; padding-top: 20px;">
           <div class="playerContainer" style="width: 100%; height: 580px;">
             <div id="player">
               <!-- <iframe src="https://www.youtube.com/embed/wrqlWXbOA4o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:480px;"></iframe> -->
             </div>
           </div>
         
-          <div class="row mt-5" style="margin-left: 0px;">
-            <div class="col-lg-4 ">
+          <div class="row mt-5 d-none d-lg-block d-md-block d-sm-block" style="margin-left: 0px;">
+            <div class="col-lg-4 col-md-4 col-sm-4">
               <div class="tech-data row">
                   <h3 class="font-bold">The Companies</h3>
                   <div class="col-lg-6">
@@ -42,7 +42,7 @@
               </div>
             </div>
     
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4 col-sm-4">
               <h3 class="font-bold">CometChat</h3>
               <p>Copy for CometChat: We are thrilled to live stream Techstars Demo Day. Stay tuned to see what CometChat and other proficient companies bring to the table and feel free to join our chat to share your thoughts and opinions on the same!</p>
 
@@ -53,7 +53,7 @@
               </div>
             </div>
     
-            <div class="col-lg-4">
+            <div class="col-lg-4 col-md-4 col-sm-4">
               <h3 class="font-bold">TechStars</h3>
               <p>Techstars Boulder is a seed accelerator, aimed at helping startups succeed through mentorship-driven programs.</p>
     
@@ -67,7 +67,7 @@
           
         </div>
     
-        <div class="col-lg-4 h-100vh" style="padding-left: 0px; padding-right: 0px;">
+        <div class="col-lg-4 col-md-4 col-sm-6 h-100vh" style="padding-left: 0px; padding-right: 0px;">
           
             <div id="cometchat" class="cometchatContainer chatBoxContain"cc-layout = "cc_embed"></div>
           
@@ -108,10 +108,16 @@
       font-weight: 400;
     }
 
-    @media only screen and (max-width: 1199px) and (min-width: 320px){
+    @media only screen and (max-width: 767px) and (min-width: 320px){
       .chatBoxContain{
         position: relative !important;
         width: 100% !important;
+      }
+    }
+
+    @media only screen and (max-width: 992px) and (min-width: 768px){
+      .chatBoxContain{
+        width: 50% !important;
       }
     }
     </style>
